@@ -1,0 +1,16 @@
+# sample rsnapshot cron schedule
+#
+# This example will do the following:
+#     6 alpha backups a day (once every 4 hours, at 0,4,8,12,16,20)
+#     1 beta backup every day, at 11:50PM
+#     1 gamma backup every week, at 11:40PM, on Saturdays (6th day of week)
+#     1 delta backup every month, at 11:30PM on the 1st day of the month
+#
+# It is usually a good idea to schedule the larger backup levels to
+# run a bit before the lower ones.  See the rsnapshot man page for
+# more details.
+
+# 0 */4 * * *	root	/usr/bin/rsnapshot alpha
+# 50 23 * * *	root	/usr/bin/rsnapshot beta
+# 40 23 * * 6	root	/usr/bin/rsnapshot gamma
+# 30 23 1 * *	root	/usr/bin/rsnapshot delta
